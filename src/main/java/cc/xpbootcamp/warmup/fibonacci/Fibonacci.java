@@ -10,6 +10,16 @@ public class Fibonacci {
             return 1;
         }
 
-        return 0;
+        int a = 1;
+        int b = 1;
+        int cur = 3;
+        while (cur != position) {
+            int temp = a + b;
+            a = b;
+            b = temp;
+            cur++;
+        }
+
+        return a + b;
     }
 }
