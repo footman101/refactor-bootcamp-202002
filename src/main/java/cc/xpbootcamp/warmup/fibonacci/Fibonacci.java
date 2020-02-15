@@ -6,6 +6,10 @@ public class Fibonacci {
             return -1;
         }
 
-        return position;
+        if (position == 1) {
+            return 1;
+        }
+
+        return 0;
     }
 }
