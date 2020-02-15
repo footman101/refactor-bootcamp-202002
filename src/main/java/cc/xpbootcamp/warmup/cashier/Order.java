@@ -24,4 +24,20 @@ public class Order {
     public List<Product> getProducts() {
         return products;
     }
+
+    public double totalSalesTax() {
+        double result = 0d;
+        for (Product product : products) {
+            result += product.getSalesTax();
+        }
+        return result;
+    }
+
+    public double totalAmount() {
+        double result = 0d;
+        for (Product product : products) {
+            result += product.totalAmount() + product.getSalesTax();
+        }
+        return result;
+    }
 }

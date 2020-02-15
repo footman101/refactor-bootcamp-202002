@@ -24,7 +24,9 @@ public class Product {
 		return quantity;
 	}
 
-    double totalAmount() {
+	public double totalAmount() {
         return price * quantity;
     }
+
+	public double getSalesTax() { return totalAmount() * .10; }
 }

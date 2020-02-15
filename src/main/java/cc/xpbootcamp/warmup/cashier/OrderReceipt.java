@@ -15,39 +15,33 @@ public class OrderReceipt {
     }
 
     public String printReceipt() {
-        StringBuilder output = new StringBuilder();
+        StringBuilder result = new StringBuilder();
 
         // print headers
-        output.append("======Printing Orders======\n");
-        output.append(order.getCustomerName());
-        output.append(order.getCustomerAddress());
+        result.append("======Printing Orders======\n");
+        result.append(order.getCustomerName());
+        result.append(order.getCustomerAddress());
 
-        // prints lineItems
-        double totSalesTx = 0d;
-        double tot = 0d;
+        // prints products
         for (Product product : order.getProducts()) {
-            output.append(product.getDescription());
-            output.append('\t');
-            output.append(product.getPrice());
-            output.append('\t');
-            output.append(product.getQuantity());
-            output.append('\t');
-            output.append(product.totalAmount());
-            output.append('\n');
-
-            // calculate sales tax @ rate of 10%
-            double salesTax = product.totalAmount() * .10;
-            totSalesTx += salesTax;
-
-            // calculate total amount of lineItem = price * quantity + 10 % sales tax
-            tot += product.totalAmount() + salesTax;
+            result.append(product.getDescription());
+            result.append('\t');
+            result.append(product.getPrice());
+            result.append('\t');
+            result.append(product.getQuantity());
+            result.append('\t');
+            result.append(product.totalAmount());
+            result.append('\n');
         }
 
-        // prints the state tax
-        output.append("Sales Tax").append('\t').append(totSalesTx);
+        // prints the sales tax
+        result.append("Sales Tax").append('\t').append(order.totalSalesTax());
+        result.append('\n');
 
-        // print total amount
-        output.append("Total Amount").append('\t').append(tot);
-        return output.toString();
+        // prints total amount
+        result.append("Total Amount").append('\t').append(order.totalAmount());
+        result.append('\n');
+
+        return result.toString();
     }
 }
