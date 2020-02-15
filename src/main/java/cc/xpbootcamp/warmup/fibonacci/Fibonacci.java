@@ -6,7 +6,7 @@ public class Fibonacci {
             return -1;
         }
 
-        if (position == 1) {
+        if (position == 1 || position == 2) {
             return 1;
         }
 
