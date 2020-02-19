@@ -1,16 +1,19 @@
 package cc.xpbootcamp.warmup.cashier;
 
+import java.util.Date;
 import java.util.List;
 
 public class Order {
     String customerName;
     String customerAddress;
     List<Product> products;
+    Date date;
 
-    public Order(String customerName, String customerAddress, List<Product> productList) {
+    public Order(String customerName, String customerAddress, List<Product> productList, Date date) {
         this.customerName = customerName;
         this.customerAddress = customerAddress;
         this.products = productList;
+        this.date = date;
     }
 
     public String getCustomerName() {
@@ -24,6 +27,8 @@ public class Order {
     public List<Product> getProducts() {
         return products;
     }
+
+    public Date getDate() { return date; }
 
     public double totalSalesTax() {
         double result = 0d;

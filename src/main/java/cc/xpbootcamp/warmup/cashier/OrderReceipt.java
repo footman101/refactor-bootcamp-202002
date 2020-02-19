@@ -1,5 +1,8 @@
 package cc.xpbootcamp.warmup.cashier;
 
+import java.text.SimpleDateFormat;
+import java.util.Locale;
+
 /**
  * OrderReceipt prints the details of order including customer name, address, description, quantity,
  * price and amount. It also calculates the sales tax @ 10% and prints as part
@@ -18,9 +21,17 @@ public class OrderReceipt {
         StringBuilder result = new StringBuilder();
 
         // print headers
-        result.append("======Printing Orders======\n");
-        result.append(order.getCustomerName());
-        result.append(order.getCustomerAddress());
+        result.append("===== 老王超市，值得信赖 ======\n");
+        if (order.getCustomerName() != null) {
+            result.append(order.getCustomerName()).append('\n');
+        }
+        if (order.getCustomerAddress() != null) {
+            result.append(order.getCustomerAddress()).append('\n');
+        }
+        if (order.getDate() != null) {
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy年M月d日，EEEE", Locale.CHINA);
+            result.append(formatter.format(order.getDate())).append('\n');
+        }
 
         // prints products
         for (Product product : order.getProducts()) {
