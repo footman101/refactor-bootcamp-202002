@@ -38,7 +38,7 @@ public class Order {
         return result;
     }
 
-    public double totalAmount() {
+    public double originTotalAmount() {
         double result = 0d;
         for (Product product : products) {
             result += product.totalAmount() + product.getSalesTax();
@@ -46,10 +46,18 @@ public class Order {
         return result;
     }
 
+    public double totalAmount() {
+        double result = 0d;
+        for (Product product : products) {
+            result += product.totalAmount() + product.getSalesTax();
+        }
+        return result - getDiscount();
+    }
+
     public double getDiscount() {
-        System.out.println(date.getDate());
-        if (date != null && (date.getDate() == 2)) {
-            return totalAmount() * 0.98;
+        // 每逢周三，所有商品98折销售
+        if (date != null && (date.getDay() == 3)) {
+            return originTotalAmount() * 0.02;
         }
         return 0;
     }
