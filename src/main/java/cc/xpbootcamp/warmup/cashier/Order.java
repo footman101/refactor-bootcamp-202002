@@ -45,4 +45,12 @@ public class Order {
         }
         return result;
     }
+
+    public double getDiscount() {
+        System.out.println(date.getDate());
+        if (date != null && (date.getDate() == 2)) {
+            return totalAmount() * 0.98;
+        }
+        return 0;
+    }
 }
